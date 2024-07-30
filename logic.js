@@ -54,53 +54,51 @@ gsap.to(childDiv, {
         end: () => `+=${getScrollMax()}`,
         scrub: true,
         pin: true,
-        markers: true,
         invalidateOnRefresh: true,
     }
 })
 
-
-const mainHello = document.querySelector(".main-Hello")
-const text = mainHello.textContent
-mainHello.innerHTML = ''
-text.split('').forEach((char, index) => {
-    const span = document.createElement('div');
-    span.textContent = char;
-    mainHello.appendChild(span);
-})
-const letters = mainHello.querySelectorAll('div')
-const loader = document.querySelector('.loader')
-const loadingNumberElement = document.querySelector('.loading-number');
-let loadingProgress = {
-    value: 0
-};
-
-const tl = gsap.timeline()
-tl.to(loadingProgress, {
-    value: 100,
-    duration: 2,
-    ease: "linear",
-    onUpdate: () => {
-        loadingNumberElement.textContent = `${Math.round(loadingProgress.value)}`;
-    },
-    onComplete: () => {
-        loadingNumberElement.textContent = '100';
-        // You can add further actions here, like hiding the loader
-        // document.querySelector('.loader').style.display = 'none';
-    }
-})
-tl.to(loader, {
-    transform: 'translate(0,-100%)',
-    duration: 0.7,
-    ease: 'power2.out'
-}, 'same')
-tl.from(letters, {
-    y: 500,
-    opacity: 0,
-    duration: 0.8,
-    stagger: 0.3,
-    ease: "power2.out"
-}, 'same');
-tl.to(loader, {
-    display: "none"
+window.addEventListener('load', ()=>{
+    const mainHello = document.querySelector(".main-Hello")
+    const text = mainHello.textContent
+    mainHello.innerHTML = ''
+    text.split('').forEach((char, index) => {
+        const span = document.createElement('div');
+        span.textContent = char;
+        mainHello.appendChild(span);
+    })
+    const letters = mainHello.querySelectorAll('div')
+    const loader = document.querySelector('.loader')
+    const loadingNumberElement = document.querySelector('.loading-number');
+    let loadingProgress = {
+        value: 0
+    };
+    
+    const tl = gsap.timeline()
+    tl.to(loadingProgress, {
+        value: 100,
+        duration: 2,
+        ease: "linear",
+        onUpdate: () => {
+            loadingNumberElement.textContent = `${Math.round(loadingProgress.value)}`;
+        },
+        onComplete: () => {
+            loadingNumberElement.textContent = '100';
+        }
+    })
+    tl.to(loader, {
+        transform: 'translate(0,-100%)',
+        duration: 0.7,
+        ease: 'power2.out'
+    }, 'same')
+    tl.from(letters, {
+        y: 500,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.3,
+        ease: "power2.out"
+    }, 'same');
+    tl.to(loader, {
+        display: "none"
+    })
 })
