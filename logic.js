@@ -1,15 +1,15 @@
-window.addEventListener('resize', () => {
-    location.reload();
+// window.addEventListener('resize', () => {
+//     location.reload();
 
-});
-window.addEventListener('beforeunload', () => {
-    window.scrollTo(0, 0);
-});
+// });
+// window.addEventListener('beforeunload', () => {
+//     window.scrollTo(0, 0);
+// });
 
-window.addEventListener('load', () => {
-    window.scrollTo(0, 0);
+// window.addEventListener('load', () => {
+//     window.scrollTo(0, 0);
 
-});
+// });
 gsap.registerPlugin(ScrollTrigger);
 
 
