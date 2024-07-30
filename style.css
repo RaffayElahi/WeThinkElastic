@@ -51,6 +51,11 @@ body{
     overflow-x:hidden;
     
 }
+a{
+    color: white;
+    line-decoration: none;
+}
+    
 main{
     width: 100%;
     height: auto;
